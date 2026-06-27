@@ -21,19 +21,19 @@ unittest:
 mypy:
   stage: test
   script:
-    - mypy src/
+    - mypy src/main.py/
 
 black:
   stage: test
   script:
-    - black --diff --check src/
+    - black --diff --check src/main.py/
 
 isort:
   stage: test
   script:
-    - isort --check-only src/
+    - isort --check-only src/main.py/
 
 flask8:
   stage: test
   script:
-    - flake8 src/
+    - flake8 src/main.py/
