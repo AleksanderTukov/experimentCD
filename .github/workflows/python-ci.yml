@@ -9,7 +9,8 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-22.04 
-    
+  env:
+           PYTHONPATH: ${{ github.workspace }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
