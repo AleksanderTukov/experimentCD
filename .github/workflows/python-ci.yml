@@ -9,8 +9,12 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-22.04
-    env:
-          PYTHONPATH: ${{ github.workspace }}
+    unittest:
+  stage: test
+  variables:
+    PYTHONPATH: "$CI_PROJECT_DIR"
+  script:
+    - pytest test --import-mode=importlib
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,7 +31,7 @@ jobs:
 
       - name: Run unittests
         run: |
-           pytest test --import-mode=importlib
+           pytest test 
         
         
 
