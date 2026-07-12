@@ -27,8 +27,7 @@ jobs:
       - name: Run unittests
         run: |
            python -m pytest test
-        env:
-           PYTHONPATH: ${{ github.workspace }}
+        
         
 
       - name: Type check with mypy
