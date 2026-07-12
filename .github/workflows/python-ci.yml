@@ -26,7 +26,9 @@ jobs:
 
       - name: Run unittests
         run: |
-          pytest test
+           pytest test --import-mode=importlib
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         
 
       - name: Type check with mypy
