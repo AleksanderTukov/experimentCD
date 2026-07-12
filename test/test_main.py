@@ -3,7 +3,7 @@ from httpx import AsyncClient
 from sqlalchemy import delete
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
-from main import Base, Ingredient, Recipe, app, get_session
+from src.main import Base, Ingredient, Recipe, app, get_session
 
 TEST_DATABASE_URL = "sqlite+aiosqlite:///./test_cookbook.db"
 engine = create_async_engine(TEST_DATABASE_URL, echo=False)
