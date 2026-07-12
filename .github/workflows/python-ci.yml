@@ -9,8 +9,7 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-22.04 
-    env:
-       PYTHONPATH: "$CI_PROJECT_DIR"
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,8 +26,9 @@ jobs:
 
       - name: Run unittests
         run: |
-           pytest test --import-mode=importlib
-        
+           python -m pytest test
+        env:
+           PYTHONPATH: ${{ github.workspace }}
         
 
       - name: Type check with mypy
