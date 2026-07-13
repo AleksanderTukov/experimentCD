@@ -1,4 +1,5 @@
 import pytest
+import anyio
 from httpx import AsyncClient
 from sqlalchemy import delete
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
