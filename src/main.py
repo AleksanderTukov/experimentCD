@@ -36,7 +36,7 @@ class Recipe(Base):
     description: Mapped[str] = mapped_column(Text, nullable=False)
     views: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
 
-    ingredients: Mapped[list["Ingredient"]] = relationship(
+    ingredients: Mapped[List[Ingredient]] = relationship(
         secondary="recipe_ingredients",
         back_populates="recipes",
         lazy="selectin",
@@ -49,7 +49,7 @@ class Ingredient(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     name: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
 
-    recipes: Mapped[list[Recipe]] = relationship(
+    recipes: Mapped[List[Recipe]] = relationship(
         secondary="recipe_ingredients",
         back_populates="ingredients",
         lazy="selectin",
