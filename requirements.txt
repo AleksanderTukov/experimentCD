@@ -9,3 +9,4 @@ httpx
 sqlalchemy
 fastapi
 uvicorn[standard]
+aiosqlite
