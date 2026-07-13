@@ -91,7 +91,7 @@ class RecipeCreateIn(BaseModel):
     name: str = Field(min_length=1, max_length=255, examples=["Борщ"])
     cooking_time: int = Field(gt=0, examples=[90])
     description: str = Field(min_length=1, examples=["Пошаговое описание рецепта"])
-    ingredients: list[RecipeCreateIngredientIn] = Field(min_length=1)
+    ingredients: List[RecipeCreateIngredientIn] = Field(min_length=1)
 
 
 @asynccontextmanager
@@ -124,7 +124,7 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:
 
 @app.get(
     "/recipes",
-    response_model=list[RecipeListItemOut],
+    response_model=List[RecipeListItemOut],
     summary="Список рецептов",
     description="Возвращает все рецепты, отсортированные по популярности и времени готовки.",
 )
@@ -167,7 +167,7 @@ async def get_recipe(recipe_id: int, session: AsyncSession = Depends(get_session
 )
 async def create_recipe(payload: RecipeCreateIn, session: AsyncSession = Depends(get_session)):
     ingredient_names = [item.name.strip() for item in payload.ingredients]
-    ingredients: list[Ingredient] = []
+    ingredients: List[Ingredient] = []
 
     for name in ingredient_names:
         stmt = select(Ingredient).where(func.lower(Ingredient.name) == name.lower())
